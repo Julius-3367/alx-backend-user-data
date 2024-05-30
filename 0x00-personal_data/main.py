@@ -2,6 +2,7 @@
 """
 Main file
 """
+'''
 import logging
 import re
 
@@ -12,15 +13,13 @@ hash_password = __import__('encrypt_password').hash_password
 is_valid = __import__('encrypt_password').is_valid
 
 fields = ["password", "date_of_birth"]
-messages = [
-    "name=john doe;email=johndoe@example.com;password=supersecret;date_of_birth=01/01/1990;",
-    "name=korir julius;email=korirjulius001@gmail.com;password=root;date_of_birth=22/11/1994;"
-]
+messages = ["name=egg;email=eggmin@eggsample.com;password=eggcellent;date_of_birth=12/12/1986;", "name=bob;email=bob@dylan.com;password=bobbycool;date_of_birth=03/04/1993;"]
 
 for message in messages:
     print(filter_datum(fields, 'xxx', message, ';'))
 
-message = "name=korir julius;email=korirjulius001@gmail.com;ssn=000-123-0000;password=root;"
+
+message = "name=Bob;email=bob@dylan.com;ssn=000-123-0000;password=bobby2019;"
 log_record = logging.LogRecord("my_logger", logging.INFO, None, None, message, None, None)
 formatter = RedactingFormatter(fields=("email", "ssn", "password"))
 print(formatter.format(log_record))
@@ -38,11 +37,10 @@ for row in cursor:
     print(row[0])
 cursor.close()
 db.close()
-
+'''
 password = "MyAmazingPassw0rd"
 encrypted_password = hash_password(password)
 print(hash_password(password))
 print(hash_password(password))
 print(encrypted_password)
 print(is_valid(encrypted_password, password))
-
